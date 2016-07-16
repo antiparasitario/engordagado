@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#contactform").submit(function (e) {
-
+        $('input[type="submit"]').prop('disabled', true);
         e.preventDefault();
         var name = $("#name");
         var mobile = $("#mobile");
