@@ -23,6 +23,13 @@ $(document).ready(function () {
 
         $(".loading").fadeIn("slow").html("<p><strong>Enviando...</strong></p>");
 
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Contato',
+            eventAction: 'Contato',
+            eventLabel: 'Contato'
+        });
+
         $.ajax({
             url: "https://formspree.io/contato@antiparasitario.com.br",
             method: "POST",
