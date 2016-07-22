@@ -3,6 +3,7 @@ $(document).ready(function () {
         $('input[type="submit"]').prop('disabled', true);
         e.preventDefault();
         var name = $("#name");
+        var origem = $("#origem");
         var mobile = $("#mobile");
         var flag = false;
         if (name.val() == "") {
@@ -19,7 +20,7 @@ $(document).ready(function () {
             return false;
         }
 
-        var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val() + " ORIGEM=_ENGORDA_PASTO_";
+        var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val() + " ORIGEM=" + origem.val();
 
         $(".loading").fadeIn("slow").html("<p><strong>Enviando...</strong></p>");
 
