@@ -1,28 +1,34 @@
 $(document).ready(function () {
     $("#contactform").submit(function (e) {
-        $('input[type="submit"]').prop('disabled', true);
         e.preventDefault();
+
         var name = $("#name");
-        var origem = $("#origem");
         var mobile = $("#mobile");
-        var flag = false;
+        var email = $("#email");
+        var origem = $("#origem");
+        
+        
         if (name.val() == "") {
             name.closest(".form-group").addClass("has-error");
             name.focus();
-            flag = false;
             return false;
         } else {
             name.closest(".form-group").removeClass("has-error").addClass("has-success");
         } if (mobile.val() == "") {
             mobile.closest(".form-group").addClass("has-error");
             mobile.focus();
-            flag = false;
+            return false;
+        } if (email.val() == "" && origem.val() === "EMAIL") {
+            email.closest(".form-group").addClass("has-error");
+            email.focus();
             return false;
         }
 
+        console.log('foi');
         var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val() + " ORIGEM=" + origem.val();
 
         $(".loading").fadeIn("slow").html("<p><strong>Enviando...</strong></p>");
+        $('input[type="submit"]').prop('disabled', true);
 
         ga('send', {
             hitType: 'event',
