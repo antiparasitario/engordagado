@@ -26,6 +26,10 @@ $(document).ready(function () {
 
         console.log('foi');
         var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val() + " ORIGEM=" + origem.val();
+        if (origem.val() === "EMAIL") {
+            dataString = dataString + " EMAIL=" + email.val();
+        }
+            
 
         $(".loading").fadeIn("slow").html("<p><strong>Enviando...</strong></p>");
         $('input[type="submit"]').prop('disabled', true);
