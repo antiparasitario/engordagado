@@ -1,45 +1,28 @@
 $(document).ready(function () {
     $("#contactform").submit(function (e) {
-        e.preventDefault();
 
+        e.preventDefault();
         var name = $("#name");
         var mobile = $("#mobile");
-        var email = $("#email");
-        var origem = $("#origem");
-        
-        
+        var flag = false;
         if (name.val() == "") {
             name.closest(".form-group").addClass("has-error");
             name.focus();
+            flag = false;
             return false;
         } else {
             name.closest(".form-group").removeClass("has-error").addClass("has-success");
         } if (mobile.val() == "") {
             mobile.closest(".form-group").addClass("has-error");
             mobile.focus();
-            return false;
-        } if (email.val() == "" && origem.val() === "EMAIL") {
-            email.closest(".form-group").addClass("has-error");
-            email.focus();
+            flag = false;
             return false;
         }
 
-        console.log('foi');
-        var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val() + " ORIGEM=" + origem.val();
-        if (origem.val() === "EMAIL") {
-            dataString = dataString + " EMAIL=" + email.val();
-        }
-            
+        var dataString = "Nome=" + name.val() + " Telefone=" + mobile.val();
 
         $(".loading").fadeIn("slow").html("<p><strong>Enviando...</strong></p>");
         $('input[type="submit"]').prop('disabled', true);
-
-        ga('send', {
-            hitType: 'event',
-            eventCategory: 'Contato',
-            eventAction: 'Contato',
-            eventLabel: 'Contato'
-        });
 
         $.ajax({
             url: "https://formspree.io/contato@antiparasitario.com.br",
@@ -53,4 +36,3 @@ $(document).ready(function () {
 
     });
 })
-
